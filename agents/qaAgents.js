@@ -12,7 +12,7 @@ export async function qualityGateAgent(code, fileName, context) {
   } catch (error) {}
   
   const response = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 2000,
     system: `You are a strict quality gate reviewer. Evaluate code against PRODUCTION STANDARDS.
 
@@ -62,7 +62,7 @@ export async function architectureConsistencyAgent(code, fileName, projectPlan) 
   } catch (error) {}
   
   const response = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 2000,
     system: `You are an architecture consistency checker. Verify code follows the PROJECT PLAN and TECH STACK.
 
@@ -103,7 +103,7 @@ export async function integrationValidationAgent(code, fileName, relatedFiles) {
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   
   const response = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 2000,
     system: `You are an integration validator. Check if code INTEGRATES PROPERLY with related files.
 
@@ -146,7 +146,7 @@ export async function securityAuditAgent(code, fileName) {
   } catch (error) {}
   
   const response = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 1500,
     system: `You are a security auditor. Find SECURITY VULNERABILITIES.
 
@@ -194,7 +194,7 @@ export async function bestPracticesAgent(code, fileName, fileType) {
   } catch (error) {}
   
   const response = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 1500,
     system: `You are a best practices enforcer for ${fileType}.
 
@@ -243,7 +243,7 @@ export async function codeImprovementAgent(code, fileName, allFeedback) {
   } catch (error) {}
   
   const response = await client.messages.create({
-    model: "claude-opus-4-20250514",  // 🚀 OPUS 4 - Most powerful for fixing complex issues
+    model: "claude-opus-4-5-20251101",  // 🚀 OPUS 4 - Most powerful for fixing complex issues
     max_tokens: 8000,  // 🔥 DOUBLED for comprehensive rewrites
     system: `You are an EXPERT code improvement specialist with DEEP expertise in production systems. 
 

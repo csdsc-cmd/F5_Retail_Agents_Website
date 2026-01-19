@@ -12,7 +12,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs/promises";
 import path from "path";
 
-const anthropic = new Anthropic();
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 // Design Director persona
 const DESIGN_DIRECTOR_SYSTEM = `You are a Senior Design Director with 20 years of experience in digital product design.
@@ -209,7 +209,7 @@ Respond with JSON only, no additional text.`;
 
   try {
     const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-5-20250929",
+      model: "claude-opus-4-5-20251101",
       max_tokens: 8192,
       system: DESIGN_DIRECTOR_SYSTEM,
       messages: [{ role: "user", content: prompt }]

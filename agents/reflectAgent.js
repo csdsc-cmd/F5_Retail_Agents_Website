@@ -151,7 +151,7 @@ Return ONLY valid JSON. Focus on actionable, specific learnings. Avoid generic a
 
     try {
       const response = await this.client.messages.create({
-        model: "claude-sonnet-4-5-20250929",
+        model: "claude-opus-4-5-20251101",
         max_tokens: 3000,
         system: "You are a learning extraction specialist. Analyze development sessions and extract specific, actionable lessons. Return ONLY valid JSON.",
         messages: [{ role: "user", content: prompt }]

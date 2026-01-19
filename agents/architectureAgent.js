@@ -4,7 +4,7 @@ export async function architectureAgent(projectStructure, analysisGoal) {
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   
   const response = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 2500,
     system: `You are a software architect. Analyze codebases and provide architectural insights:
 - Identify design patterns

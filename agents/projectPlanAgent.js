@@ -19,7 +19,7 @@ import fs from "fs/promises";
 import path from "path";
 import readline from "readline";
 
-const anthropic = new Anthropic();
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 // === INTERVIEW QUESTIONS ===
 const INTERVIEW_SECTIONS = [
@@ -361,7 +361,7 @@ When ALL success criteria are met, add this comment to backend/src/index.ts:
 Generate the complete PROJECT_PLAN.md now:`;
 
   const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 8192,
     messages: [{ role: "user", content: prompt }],
   });

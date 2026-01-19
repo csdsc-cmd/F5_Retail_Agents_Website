@@ -46,15 +46,15 @@ const Header: React.FC = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-24 lg:h-28">
-            {/* Logo */}
+            {/* Logo - 2x size with overflow allowed, blend mode for transparency */}
             <Link
               to="/"
-              className="flex items-center group"
+              className="flex items-center group -my-4"
             >
               <img
                 src="/images/Fusion_logo+tagline_coral_RGB.jpg"
                 alt="Fusion5 - Business Software & Technology"
-                className="h-16 w-auto lg:h-20"
+                className="h-32 w-auto lg:h-40 object-contain mix-blend-multiply"
               />
             </Link>
 

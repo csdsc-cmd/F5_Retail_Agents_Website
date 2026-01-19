@@ -21,7 +21,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-12 lg:py-16">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 pt-20 lg:pt-24 pb-12 lg:pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="text-left">

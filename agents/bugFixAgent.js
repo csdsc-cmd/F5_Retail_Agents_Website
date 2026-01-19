@@ -4,7 +4,7 @@ export async function bugFixAgent(bugDescription, relevantCode) {
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   
   const response = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-5-20251101",
     max_tokens: 2000,
     system: `You are a debugging expert. Analyze bugs and provide fixes:
 - Identify root cause
