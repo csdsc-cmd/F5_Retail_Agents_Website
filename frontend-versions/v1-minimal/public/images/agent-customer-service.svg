@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="customerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF7B5C"/>
+      <stop offset="100%" style="stop-color:#FF5C39"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#customerGrad)" opacity="0.1"/>
+  <!-- Person silhouette -->
+  <circle cx="24" cy="20" r="8" stroke="url(#customerGrad)" stroke-width="2.5" fill="none"/>
+  <path d="M10 50C10 40 16 34 24 34C32 34 38 40 38 50" stroke="url(#customerGrad)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- Headset -->
+  <path d="M16 20C16 14 20 10 26 10" stroke="url(#customerGrad)" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="12" y="18" width="6" height="8" rx="2" fill="url(#customerGrad)"/>
+  <!-- Chat bubbles -->
+  <rect x="38" y="12" width="20" height="14" rx="3" fill="url(#customerGrad)"/>
+  <path d="M42 26L38 32L46 26" fill="url(#customerGrad)"/>
+  <line x1="42" y1="17" x2="54" y2="17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="42" y1="21" x2="50" y2="21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- AI sparkle -->
+  <circle cx="52" cy="44" r="8" fill="url(#customerGrad)" opacity="0.3"/>
+  <path d="M52 38V50M46 44H58" stroke="url(#customerGrad)" stroke-width="2" stroke-linecap="round"/>
+</svg>

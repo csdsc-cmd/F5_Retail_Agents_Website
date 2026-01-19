@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="agentLayerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF5C39"/>
+      <stop offset="100%" style="stop-color:#FF7B5C"/>
+    </linearGradient>
+    <linearGradient id="orchestrationGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C44569"/>
+      <stop offset="100%" style="stop-color:#E05A7A"/>
+    </linearGradient>
+    <linearGradient id="integrationGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6B2D5B"/>
+      <stop offset="100%" style="stop-color:#8B4D7B"/>
+    </linearGradient>
+    <linearGradient id="foundationGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B1D4E"/>
+      <stop offset="100%" style="stop-color:#5B3D6E"/>
+    </linearGradient>
+    <filter id="layerShadow" x="-5%" y="-10%" width="110%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.15"/>
+    </filter>
+    <filter id="iconShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="500" fill="#FAFAFA"/>
+
+  <!-- Title -->
+  <text x="400" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#1F2937" text-anchor="middle">Platform Architecture</text>
+  <text x="400" y="58" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle">Enterprise-grade AI agents built on Microsoft Azure</text>
+
+  <!-- Layer 1: Agent Layer -->
+  <g filter="url(#layerShadow)">
+    <rect x="60" y="85" width="680" height="90" rx="12" fill="url(#agentLayerGrad)"/>
+    <text x="100" y="115" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">Agent Layer</text>
+    <text x="100" y="135" font-family="system-ui, sans-serif" font-size="11" fill="white" opacity="0.8">6 purpose-built retail AI agents</text>
+
+    <!-- Agent icons -->
+    <g transform="translate(280, 95)">
+      <rect x="0" y="0" width="56" height="56" rx="10" fill="white" opacity="0.2"/>
+      <text x="28" y="34" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">Inventory</text>
+      <text x="28" y="46" font-family="system-ui, sans-serif" font-size="8" fill="white" opacity="0.7" text-anchor="middle">Intelligence</text>
+    </g>
+    <g transform="translate(350, 95)">
+      <rect x="0" y="0" width="56" height="56" rx="10" fill="white" opacity="0.2"/>
+      <text x="28" y="34" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">Pricing</text>
+      <text x="28" y="46" font-family="system-ui, sans-serif" font-size="8" fill="white" opacity="0.7" text-anchor="middle">Promotions</text>
+    </g>
+    <g transform="translate(420, 95)">
+      <rect x="0" y="0" width="56" height="56" rx="10" fill="white" opacity="0.2"/>
+      <text x="28" y="34" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">Store</text>
+      <text x="28" y="46" font-family="system-ui, sans-serif" font-size="8" fill="white" opacity="0.7" text-anchor="middle">Operations</text>
+    </g>
+    <g transform="translate(490, 95)">
+      <rect x="0" y="0" width="56" height="56" rx="10" fill="white" opacity="0.2"/>
+      <text x="28" y="34" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">Customer</text>
+      <text x="28" y="46" font-family="system-ui, sans-serif" font-size="8" fill="white" opacity="0.7" text-anchor="middle">Service</text>
+    </g>
+    <g transform="translate(560, 95)">
+      <rect x="0" y="0" width="56" height="56" rx="10" fill="white" opacity="0.2"/>
+      <text x="28" y="34" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">Loss</text>
+      <text x="28" y="46" font-family="system-ui, sans-serif" font-size="8" fill="white" opacity="0.7" text-anchor="middle">Prevention</text>
+    </g>
+    <g transform="translate(630, 95)">
+      <rect x="0" y="0" width="56" height="56" rx="10" fill="white" opacity="0.2"/>
+      <text x="28" y="34" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">Executive</text>
+      <text x="28" y="46" font-family="system-ui, sans-serif" font-size="8" fill="white" opacity="0.7" text-anchor="middle">Insights</text>
+    </g>
+  </g>
+
+  <!-- Connection arrows down -->
+  <path d="M400 180 L400 195" stroke="#C44569" stroke-width="3" stroke-linecap="round"/>
+  <path d="M395 190 L400 200 L405 190" fill="#C44569"/>
+
+  <!-- Layer 2: Orchestration Layer -->
+  <g filter="url(#layerShadow)">
+    <rect x="100" y="205" width="600" height="90" rx="12" fill="url(#orchestrationGrad)"/>
+    <text x="140" y="235" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">Orchestration Layer</text>
+    <text x="140" y="255" font-family="system-ui, sans-serif" font-size="11" fill="white" opacity="0.8">Workflow management &amp; human approval</text>
+
+    <!-- Features -->
+    <g transform="translate(340, 220)">
+      <rect x="0" y="0" width="100" height="50" rx="8" fill="white" opacity="0.15"/>
+      <text x="50" y="22" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">Approval</text>
+      <text x="50" y="36" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">Workflows</text>
+    </g>
+    <g transform="translate(455, 220)">
+      <rect x="0" y="0" width="100" height="50" rx="8" fill="white" opacity="0.15"/>
+      <text x="50" y="22" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">Audit</text>
+      <text x="50" y="36" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">Logging</text>
+    </g>
+    <g transform="translate(570, 220)">
+      <rect x="0" y="0" width="100" height="50" rx="8" fill="white" opacity="0.15"/>
+      <text x="50" y="22" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">Role-Based</text>
+      <text x="50" y="36" font-family="system-ui, sans-serif" font-size="10" fill="white" text-anchor="middle">Access</text>
+    </g>
+  </g>
+
+  <!-- Connection arrows down -->
+  <path d="M400 300 L400 315" stroke="#6B2D5B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M395 310 L400 320 L405 310" fill="#6B2D5B"/>
+
+  <!-- Layer 3: Integration Layer -->
+  <g filter="url(#layerShadow)">
+    <rect x="140" y="325" width="520" height="90" rx="12" fill="url(#integrationGrad)"/>
+    <text x="180" y="355" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">Integration Layer</text>
+    <text x="180" y="375" font-family="system-ui, sans-serif" font-size="11" fill="white" opacity="0.8">Native D365 connectors</text>
+
+    <!-- D365 logos -->
+    <g transform="translate(340, 340)">
+      <rect x="0" y="0" width="70" height="50" rx="8" fill="white"/>
+      <text x="35" y="22" font-family="system-ui, sans-serif" font-size="8" fill="#6B2D5B" text-anchor="middle">D365</text>
+      <text x="35" y="34" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#6B2D5B" text-anchor="middle">Commerce</text>
+    </g>
+    <g transform="translate(420, 340)">
+      <rect x="0" y="0" width="70" height="50" rx="8" fill="white"/>
+      <text x="35" y="22" font-family="system-ui, sans-serif" font-size="8" fill="#6B2D5B" text-anchor="middle">D365</text>
+      <text x="35" y="34" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#6B2D5B" text-anchor="middle">SCM</text>
+    </g>
+    <g transform="translate(500, 340)">
+      <rect x="0" y="0" width="70" height="50" rx="8" fill="white"/>
+      <text x="35" y="22" font-family="system-ui, sans-serif" font-size="8" fill="#6B2D5B" text-anchor="middle">D365</text>
+      <text x="35" y="34" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#6B2D5B" text-anchor="middle">Finance</text>
+    </g>
+    <g transform="translate(580, 340)">
+      <rect x="0" y="0" width="70" height="50" rx="8" fill="white"/>
+      <text x="35" y="22" font-family="system-ui, sans-serif" font-size="8" fill="#6B2D5B" text-anchor="middle">D365</text>
+      <text x="35" y="34" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#6B2D5B" text-anchor="middle">Customer</text>
+    </g>
+  </g>
+
+  <!-- Connection arrows down -->
+  <path d="M400 420 L400 435" stroke="#3B1D4E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M395 430 L400 440 L405 430" fill="#3B1D4E"/>
+
+  <!-- Layer 4: Foundation Layer -->
+  <g filter="url(#layerShadow)">
+    <rect x="180" y="445" width="440" height="45" rx="12" fill="url(#foundationGrad)"/>
+    <text x="230" y="473" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">Foundation: Azure AI Foundry</text>
+
+    <!-- Badges -->
+    <rect x="470" y="455" width="60" height="24" rx="6" fill="white" opacity="0.2"/>
+    <text x="500" y="471" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">SOC 2</text>
+    <rect x="540" y="455" width="60" height="24" rx="6" fill="white" opacity="0.2"/>
+    <text x="570" y="471" font-family="system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">ISO 27001</text>
+  </g>
+
+  <!-- Side labels - Human in the loop -->
+  <rect x="720" y="205" width="70" height="90" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="755" y="235" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#92400E" text-anchor="middle">Human</text>
+  <text x="755" y="248" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#92400E" text-anchor="middle">in the</text>
+  <text x="755" y="261" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#92400E" text-anchor="middle">Loop</text>
+  <circle cx="755" cy="278" r="8" fill="#F59E0B"/>
+  <path d="M751 278 L754 281 L759 275" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Connector line to orchestration -->
+  <path d="M720 250 L700 250" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>
