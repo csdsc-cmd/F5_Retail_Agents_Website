@@ -6,7 +6,6 @@ interface AnimatedSectionProps {
   className?: string;
   animation?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'scale';
   delay?: number;
-  as?: keyof JSX.IntrinsicElements;
 }
 
 const animationClasses = {
@@ -37,13 +36,12 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   className = '',
   animation = 'fade-up',
   delay = 0,
-  as: Component = 'div',
 }) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { hidden, visible } = animationClasses[animation];
 
   return (
-    <Component
+    <div
       ref={ref as React.RefObject<HTMLDivElement>}
       className={`transition-all duration-700 ease-out ${
         isVisible ? visible : hidden
@@ -51,7 +49,7 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </Component>
+    </div>
   );
 };
 

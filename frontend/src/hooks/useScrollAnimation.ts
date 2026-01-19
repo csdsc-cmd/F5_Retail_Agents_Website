@@ -39,7 +39,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
 
 // Hook for staggered children animations
 export function useStaggerAnimation(
-  itemCount: number,
+  _itemCount: number,
   baseDelay: number = 100,
   options: UseScrollAnimationOptions = {}
 ) {

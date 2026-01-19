@@ -1,65 +1,51 @@
-import React from 'react';
+import React, { useRef, useState, MouseEvent } from 'react';
 
 interface CardProps {
   children: React.ReactNode;
-  variant?: 'default' | 'elevated' | 'bordered' | 'flat';
-  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
-  onClick?: () => void;
+  spotlight?: boolean;
   hover?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({
-  children,
-  variant = 'default',
-  padding = 'md',
-  className = '',
-  onClick,
-  hover = false
-}) => {
-  const baseClasses = 'rounded-2xl transition-all duration-300';
+export function Card({ children, className = '', spotlight = false, hover = true }: CardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
-  const variantClasses = {
-    default: 'bg-white shadow-card border border-neutral-100',
-    elevated: 'bg-white shadow-card-hover',
-    bordered: 'bg-white border-2 border-neutral-200 hover:border-primary-200',
-    flat: 'bg-neutral-50'
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!spotlight || !cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    setSpotlightPos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
   };
 
-  const paddingClasses = {
-    none: '',
-    sm: 'p-4',
-    md: 'p-5',
-    lg: 'p-6',
-    xl: 'p-8'
-  };
-
-  const hoverClasses = hover || onClick
-    ? 'hover:shadow-card-hover hover:-translate-y-1 cursor-pointer group'
+  const baseClasses = 'relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden transition-all duration-300';
+  
+  const hoverClasses = hover 
+    ? 'hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1' 
     : '';
-  
-  const classes = [
-    baseClasses,
-    variantClasses[variant],
-    paddingClasses[padding],
-    hoverClasses,
-    className
-  ].filter(Boolean).join(' ');
-  
-  if (onClick) {
-    return (
-      <div className={classes} onClick={onClick} role="button" tabIndex={0}>
-        {children}
-      </div>
-    );
-  }
-  
+
   return (
-    <div className={classes}>
-      {children}
+    <div
+      ref={cardRef}
+      className={`${baseClasses} ${hoverClasses} ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {spotlight && isHovered && (
+        <div
+          className="absolute pointer-events-none transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(400px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(59, 130, 246, 0.1), transparent 40%)`,
+            inset: 0,
+          }}
+        />
+      )}
+      <div className="relative z-10">{children}</div>
     </div>
   );
-};
-
-export { Card };
-export default Card;
+}

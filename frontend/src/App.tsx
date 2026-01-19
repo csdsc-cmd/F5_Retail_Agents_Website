@@ -1,35 +1,23 @@
+// BUILD_COMPLETE - WOW Factor Enhancement v1.0
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/layout/Layout';
 
-// Pages
-import Home from './pages/Home';
-import Platform from './pages/Platform';
-import Agents from './pages/Agents';
-import AgentDetail from './pages/AgentDetail';
-import Governance from './pages/Governance';
-import ROI from './pages/ROI';
-import Demo from './pages/Demo';
-import Resources from './pages/Resources';
-import NotFound from './pages/NotFound';
+import { HeroSection } from './components/home/HeroSection';
+import { AgentsOverview } from './components/home/AgentsOverview';
+import { CustomerLogos } from './components/home/CustomerLogos';
+import { PlatformBenefits } from './components/home/PlatformBenefits';
+import { TrustSection } from './components/home/TrustSection';
+import { HomeCTA } from './components/home/HomeCTA';
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/platform" element={<Platform />} />
-          <Route path="/agents" element={<Agents />} />
-          <Route path="/agents/:agentSlug" element={<AgentDetail />} />
-          <Route path="/governance" element={<Governance />} />
-          <Route path="/roi" element={<ROI />} />
-          <Route path="/demo" element={<Demo />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <div className="min-h-screen bg-gray-950">
+      <HeroSection />
+      <CustomerLogos />
+      <AgentsOverview />
+      <PlatformBenefits />
+      <TrustSection />
+      <HomeCTA />
+    </div>
   );
 }
 

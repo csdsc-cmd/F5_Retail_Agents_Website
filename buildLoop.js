@@ -26,7 +26,7 @@ const CONFIG = {
   completionPromise: process.env.COMPLETION_PROMISE || "BUILD_COMPLETE",
   projectRoot: process.cwd(),
   knowledgePath: "./knowledge",
-  model: process.env.CLAUDE_MODEL || "claude-sonnet-4-20250514",
+  model: process.env.CLAUDE_MODEL || "claude-opus-4-5-20251101",
   apiTimeout: parseInt(process.env.API_TIMEOUT || "180000"),
 };
 
@@ -43,7 +43,7 @@ for (let i = 0; i < args.length; i++) {
 }
 
 // Initialize Anthropic client
-const anthropic = new Anthropic();
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 // === KNOWLEDGE BASE LOADER ===
 async function loadKnowledgeBase() {
