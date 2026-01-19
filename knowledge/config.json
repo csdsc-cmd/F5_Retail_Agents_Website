@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "description": "Knowledge system configuration",
+  
+  "reflection": {
+    "mode": "balanced",
+    "autoApproveConfidence": ["high"],
+    "askApprovalConfidence": ["medium"],
+    "logOnlyConfidence": ["low"]
+  },
+  
+  "relevanceMapping": {
+    "frontend": {
+      "lessons": ["frontend.md", "security.md"],
+      "patterns": ["react-component.jsx", "error-handling.js"]
+    },
+    "backend": {
+      "lessons": ["backend.md", "security.md", "database.md"],
+      "patterns": ["api-endpoint.js", "error-handling.js", "database-model.js"]
+    },
+    "database": {
+      "lessons": ["database.md", "security.md"],
+      "patterns": ["database-model.js"]
+    },
+    "api": {
+      "lessons": ["backend.md", "security.md"],
+      "patterns": ["api-endpoint.js", "error-handling.js"]
+    },
+    "general": {
+      "lessons": ["security.md", "architecture.md"],
+      "patterns": ["error-handling.js"]
+    }
+  },
+  
+  "staticFiles": [
+    "static/PROJECT_CONTEXT.md",
+    "static/TECH_STACK.md",
+    "static/CODING_STANDARDS.md",
+    "static/GLOSSARY.md"
+  ],
+  
+  "maxLessonsPerDomain": 50,
+  "maxPatternsToInclude": 3,
+  "archiveAfterDays": 90
+}

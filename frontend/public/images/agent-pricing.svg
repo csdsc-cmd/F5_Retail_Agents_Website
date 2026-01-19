@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="pricingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B2D5B"/>
+      <stop offset="100%" style="stop-color:#3B1D4E"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#pricingGrad)" opacity="0.1"/>
+  <!-- Price tag shape -->
+  <path d="M14 28L14 48C14 49.1 14.9 50 16 50H40C40.7 50 41.4 49.6 41.7 49L52 32L41.7 15C41.4 14.4 40.7 14 40 14H16C14.9 14 14 14.9 14 16V28Z" stroke="url(#pricingGrad)" stroke-width="2.5" fill="none"/>
+  <!-- Tag hole -->
+  <circle cx="22" cy="32" r="4" fill="url(#pricingGrad)"/>
+  <!-- Dollar sign -->
+  <path d="M34 24V40M30 28C30 26 32 24 36 24C40 24 42 26 42 28C42 30 40 31 36 32C32 33 30 34 30 36C30 38 32 40 36 40C40 40 42 38 42 36" stroke="url(#pricingGrad)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Trend arrow -->
+  <path d="M48 12L56 8L52 16" stroke="#FF5C39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="48" y1="20" x2="56" y2="8" stroke="#FF5C39" stroke-width="2" stroke-linecap="round"/>
+</svg>

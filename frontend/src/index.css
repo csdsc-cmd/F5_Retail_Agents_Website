@@ -1,0 +1,280 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* CSS Variables from Design System - Fusion5 Brand */
+:root {
+  /* Fusion5 Brand Colors */
+  --fusion-orange: #FF5C39;
+  --fusion-coral: #FF7B5C;
+  --fusion-magenta: #C44569;
+  --fusion-purple: #6B2D5B;
+  --fusion-deep-purple: #3B1D4E;
+
+  /* Primary Colors (Fusion5 Purple) */
+  --primary-50: #F5F0F7;
+  --primary-100: #EBE1EF;
+  --primary-200: #D6C3DF;
+  --primary-300: #B799C7;
+  --primary-400: #9A6FAF;
+  --primary-500: #7D4597;
+  --primary-600: #6B2D5B;
+  --primary-700: #522347;
+  --primary-800: #3B1D4E;
+  --primary-900: #2A1438;
+
+  /* Neutral Colors (Warm undertones) */
+  --neutral-50: #FDFCFB;
+  --neutral-100: #F9F7F5;
+  --neutral-200: #F3F0ED;
+  --neutral-300: #E8E4E0;
+  --neutral-400: #D1CCC6;
+  --neutral-500: #A8A29E;
+  --neutral-600: #78716C;
+  --neutral-700: #57534E;
+  --neutral-800: #44403C;
+  --neutral-900: #292524;
+
+  /* Accent Colors (Fusion5 Orange for CTAs) */
+  --accent-50: #FFF5F2;
+  --accent-100: #FFEBE5;
+  --accent-200: #FFD4C9;
+  --accent-300: #FFB3A1;
+  --accent-400: #FF8A70;
+  --accent-500: #FF5C39;
+  --accent-600: #E64A2A;
+  --accent-700: #CC3A1C;
+  --accent-800: #A62D15;
+  --accent-900: #802210;
+
+  /* Brand Gradients */
+  --gradient-brand: linear-gradient(135deg, #FF5C39 0%, #C44569 50%, #3B1D4E 100%);
+  --gradient-cta: linear-gradient(135deg, #FF5C39 0%, #E64A2A 100%);
+  --gradient-purple: linear-gradient(135deg, #6B2D5B 0%, #3B1D4E 100%);
+
+  /* Success/Error/Warning */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Base Styles */
+html {
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--neutral-800);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--neutral-900);
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+p {
+  margin-bottom: 1em;
+  line-height: 1.7;
+}
+
+/* Links */
+a {
+  color: var(--primary-600);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-700);
+}
+
+/* Focus States */
+*:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+*:focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* Smooth Animations */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Utility Classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container { padding: 0 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .container { padding: 0 2rem; }
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Print Styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
+  }
+  
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-600: #1d4ed8;
+    --neutral-600: #000000;
+    --neutral-400: #666666;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Enhanced Micro-interactions */
+@layer utilities {
+  /* Button press effect */
+  .btn-press:active {
+    transform: scale(0.98);
+  }
+
+  /* Smooth card lift on hover */
+  .card-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Icon bounce on hover */
+  .icon-bounce:hover svg {
+    animation: iconBounce 0.4s ease;
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Gradient text shimmer effect */
+  .gradient-shimmer {
+    background-size: 200% auto;
+    animation: gradientShimmer 3s linear infinite;
+  }
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes gradientShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}

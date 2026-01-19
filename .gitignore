@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Environment (contains API keys)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+qa_pipeline.log
+
+# Checkpoints (auto-generated, used for resume)
+.checkpoints/
+
+# Progress tracking (auto-generated)
+generation_progress.json
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Design review outputs
+.design-reviews/
+
+# Backup directories
+*_backup_*/
+
+# Vite cache
+.vite/
+.env.save
