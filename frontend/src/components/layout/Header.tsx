@@ -1,124 +1,120 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import MobileMenu from './MobileMenu';
-import { ChevronRightIcon } from '../ui/Icons';
 
-const Header: React.FC = () => {
+export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location.pathname]);
-
-  const navigation = [
-    { name: 'Platform', href: '/platform' },
-    { name: 'Agents', href: '/agents' },
-    { name: 'Governance', href: '/governance' },
-    { name: 'Resources', href: '/resources' }
+  const navItems = [
+    { label: 'Platform', href: '/platform' },
+    { label: 'AI Agents', href: '/agents' },
+    { label: 'Governance', href: '/governance' },
+    { label: 'Resources', href: '/resources' },
+    { label: 'ROI Calculator', href: '/roi' },
   ];
 
-  const isActive = (path: string) => {
-    if (path === '/agents' && location.pathname.startsWith('/agents')) {
-      return true;
-    }
-    return location.pathname === path;
-  };
+  const isActive = (href: string) => location.pathname === href;
 
   return (
-    <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-soft'
-          : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24 lg:h-28">
-            {/* Logo - 2x size with overflow allowed, blend mode for transparency */}
-            <Link
-              to="/"
-              className="flex items-center group -my-4"
-            >
-              <img
-                src="/images/Fusion_logo+tagline_coral_RGB.jpg"
-                alt="Fusion5 - Business Software & Technology"
-                className="h-32 w-auto lg:h-40 object-contain mix-blend-multiply"
-              />
-            </Link>
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo - Fixed size */}
+          <Link 
+            to="/" 
+            className="flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+          >
+            <span className="text-xl font-bold text-blue-600">Fusion5</span>
+            <span className="ml-2 text-sm text-gray-500">Retail AI</span>
+          </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
-              {navigation.map((item) => (
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className={`text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1 ${
+                  isActive(item.href)
+                    ? 'text-blue-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link
+              to="/demo"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Book a Demo
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-200">
+            <nav className="flex flex-col space-y-2">
+              {navItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   to={item.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`px-4 py-2 text-sm font-medium rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     isActive(item.href)
-                      ? 'text-primary-700 bg-primary-50'
-                      : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-600 hover:bg-gray-50'
                   }`}
                 >
-                  {item.name}
+                  {item.label}
                 </Link>
               ))}
-            </nav>
-
-            {/* CTA Buttons */}
-            <div className="hidden lg:flex items-center space-x-3">
-              <Link
-                to="/roi"
-                className="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
-              >
-                ROI Calculator
-              </Link>
               <Link
                 to="/demo"
-                className="group inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-gradient-cta rounded-xl shadow-button hover:shadow-button-hover hover:scale-[1.02] transition-all duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mx-4 mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium text-sm text-center hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Book a Demo
-                <ChevronRightIcon className="ml-1 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-            </div>
-
-            {/* Mobile menu button */}
-            <button
-              type="button"
-              className="lg:hidden p-2 -mr-2 text-neutral-700 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
-              onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Open main menu"
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
+            </nav>
           </div>
-        </div>
-      </header>
-
-      {/* Spacer to account for fixed header */}
-      <div className="h-24 lg:h-28" />
-
-      {/* Mobile Menu */}
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-        navigation={navigation}
-        isActive={isActive}
-      />
-    </>
+        )}
+      </div>
+    </header>
   );
-};
-
-export default Header;
+}

@@ -119,6 +119,32 @@
   }
 }
 
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blob-animate {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translate(-10px, 10px) scale(0.95);
+  }
+  75% {
+    transform: translate(-20px, -10px) scale(1.02);
+  }
+}
+
 /* Animation Utility Classes */
 .animate-float {
   animation: float 3s ease-in-out infinite;
@@ -170,6 +196,14 @@
   animation: bounce-subtle 2s ease-in-out infinite;
 }
 
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.blob-animate {
+  animation: blob-animate 8s ease-in-out infinite;
+}
+
 /* Stagger animation delays */
 .animate-delay-100 { animation-delay: 100ms; }
 .animate-delay-200 { animation-delay: 200ms; }
@@ -188,9 +222,11 @@
   .animate-ripple,
   .animate-slide-up,
   .animate-fade-in,
+  .animate-fade-in-up,
   .animate-scale-in,
   .animate-spin-slow,
-  .animate-bounce-subtle {
+  .animate-bounce-subtle,
+  .blob-animate {
     animation: none !important;
     transition: none !important;
   }
@@ -198,6 +234,7 @@
   /* Ensure visibility for reduced motion users */
   .animate-slide-up,
   .animate-fade-in,
+  .animate-fade-in-up,
   .animate-scale-in {
     opacity: 1 !important;
     transform: none !important;
@@ -254,6 +291,35 @@ body {
 /* Gradient text utility */
 .gradient-text {
   @apply bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+}
+
+/* Traditional theme gradients */
+.bg-gradient-hero {
+  @apply bg-gradient-to-br from-slate-50 via-white to-purple-50;
+}
+
+.bg-gradient-brand {
+  @apply bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600;
+}
+
+.bg-gradient-brand-subtle {
+  @apply bg-gradient-to-r from-purple-200/50 via-violet-200/50 to-indigo-200/50;
+}
+
+.bg-gradient-cta {
+  @apply bg-gradient-to-r from-orange-500 via-orange-600 to-red-500;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 10px 40px rgba(249, 115, 22, 0.3);
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.shadow-soft {
+  box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
 }
 
 /* Glass effect */

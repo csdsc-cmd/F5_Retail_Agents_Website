@@ -1,248 +1,169 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronRightIcon, ShieldCheckIcon, ClockIcon, CogIcon } from '../components/ui/Icons';
+import { useState, type FormEvent, type ChangeEvent } from 'react';
 
-const benefits = [
-  {
-    icon: ClockIcon,
-    title: '30-minute session',
-    description: 'Focused demo tailored to your specific retail challenges'
-  },
-  {
-    icon: CogIcon,
-    title: 'Live D365 integration',
-    description: 'See real-time data flows with your existing systems'
-  },
-  {
-    icon: ShieldCheckIcon,
-    title: 'Governance walkthrough',
-    description: 'Understand human-in-the-loop controls and audit trails'
-  }
-];
-
-export function Demo() {
+export default function Demo() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     company: '',
-    role: '',
-    employees: '',
-    challenges: '',
-    timeline: ''
+    phone: '',
+    message: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    // In a real app, this would send to backend
     console.log('Demo request:', formData);
+    setIsSubmitted(true);
   };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen py-16 px-4 flex items-center justify-center">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h2>
+          <p className="text-gray-600 mb-6">
+            Your demo request has been received. Our team will contact you within 24 hours to schedule your personalized demo.
+          </p>
+          <a 
+            href="/"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          >
+            Return Home
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-brand-subtle rounded-full blur-3xl opacity-60" />
+    <div className="min-h-screen py-16 px-4">
+      <div className="max-w-2xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Book a Demo</h1>
+          <p className="text-xl text-gray-600">
+            See how Fusion5's AI agents can transform your retail operations. 
+            Get a personalized walkthrough tailored to your business needs.
+          </p>
+        </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left Content */}
-            <div className="lg:sticky lg:top-32">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white shadow-soft border border-neutral-200 mb-6">
-                <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
-                <span className="text-sm font-medium text-neutral-700">
-                  Usually respond within 24 hours
-                </span>
-              </div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
-                See the Platform{' '}
-                <span className="bg-gradient-brand bg-clip-text text-transparent">
-                  In Action
-                </span>
-              </h1>
-              <p className="text-xl text-neutral-600 leading-relaxed mb-8">
-                Book a personalized demo to see how our AI agents integrate with your
-                D365 environment and deliver ROI in 30 days.
-              </p>
-
-              {/* Benefits */}
-              <div className="space-y-4">
-                {benefits.map((benefit, index) => {
-                  const IconComponent = benefit.icon;
-                  return (
-                    <div key={index} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
-                        <IconComponent className="h-5 w-5 text-primary-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-neutral-900">{benefit.title}</h3>
-                        <p className="text-neutral-600 text-sm">{benefit.description}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Trust badges */}
-              <div className="mt-8 pt-8 border-t border-neutral-200">
-                <p className="text-sm text-neutral-500 mb-4">Trusted by retail leaders</p>
-                <div className="flex items-center gap-6">
-                  {['SOC 2', 'ISO 27001', 'Azure'].map((badge) => (
-                    <div key={badge} className="px-3 py-1.5 bg-neutral-100 rounded text-xs font-medium text-neutral-600">
-                      {badge}
-                    </div>
-                  ))}
-                </div>
-              </div>
+        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                First Name *
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                value={formData.firstName}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+              />
             </div>
-
-            {/* Demo Form */}
-            <div className="bg-white rounded-2xl shadow-card border border-neutral-200 p-8">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-2">Book Your Demo</h2>
-              <p className="text-neutral-600 mb-6">Fill out the form and we'll be in touch shortly.</p>
-
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-neutral-700 mb-1">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-neutral-700 mb-1">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Work Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Company *
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    required
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="role" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Your Role *
-                  </label>
-                  <select
-                    id="role"
-                    name="role"
-                    required
-                    value={formData.role}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all bg-white"
-                  >
-                    <option value="">Select your role</option>
-                    <option value="ceo">CEO / Managing Director</option>
-                    <option value="cto">CTO / IT Director</option>
-                    <option value="coo">COO / Operations Director</option>
-                    <option value="cfo">CFO / Finance Director</option>
-                    <option value="retail-ops">Retail Operations Manager</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="employees" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Company Size
-                  </label>
-                  <select
-                    id="employees"
-                    name="employees"
-                    value={formData.employees}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all bg-white"
-                  >
-                    <option value="">Select company size</option>
-                    <option value="50-200">50-200 employees</option>
-                    <option value="200-500">200-500 employees</option>
-                    <option value="500-1000">500-1,000 employees</option>
-                    <option value="1000+">1,000+ employees</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="challenges" className="block text-sm font-medium text-neutral-700 mb-1">
-                    What challenges are you looking to solve?
-                  </label>
-                  <textarea
-                    id="challenges"
-                    name="challenges"
-                    rows={3}
-                    value={formData.challenges}
-                    onChange={handleChange}
-                    placeholder="Tell us about your current pain points..."
-                    className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-gradient-cta rounded-xl shadow-button hover:shadow-button-hover hover:scale-[1.01] transition-all duration-200"
-                >
-                  Request Demo
-                  <ChevronRightIcon className="ml-2 h-5 w-5" />
-                </button>
-
-                <p className="text-xs text-neutral-500 text-center">
-                  By submitting, you agree to our{' '}
-                  <Link to="/privacy" className="text-primary-600 hover:underline">Privacy Policy</Link>.
-                </p>
-              </form>
+            <div>
+              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                Last Name *
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                value={formData.lastName}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+              />
             </div>
           </div>
-        </div>
-      </section>
+
+          <div className="mb-6">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              Work Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+              Company *
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              required
+              value={formData.company}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+              What are you most interested in learning about?
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors resize-none"
+              placeholder="Tell us about your retail challenges..."
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 outline-none"
+          >
+            Request Demo
+          </button>
+
+          <p className="text-sm text-gray-500 mt-4 text-center">
+            By submitting this form, you agree to our{' '}
+            <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>.
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
-
-export default Demo;
